@@ -1,0 +1,8 @@
+deepdsl/cudnn/TestSoftmax.class
+deepdsl/cudnn/TestActivation.class
+deepdsl/cudnn/TestPooling.class
+deepdsl/cudnn/TestLRN.class
+deepdsl/cudnn/TestBatchNorm.class
+deepdsl/cudnn/TestDropout.class
+deepdsl/cudnn/TestConvolution.class
+deepdsl/cudnn/TestConcat.class

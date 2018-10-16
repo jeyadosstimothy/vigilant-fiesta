@@ -1,0 +1,981 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f3946963587, pid=10512, tid=0x00007f394809c700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_181-b13) (build 1.8.0_181-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.181-b13 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# V  [libjvm.so+0x503587]  DebugInfoReadStream::read_object_value()+0xd7
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f394000b000):  JavaThread "main" [_thread_in_vm, id=10515, stack(0x00007f3947f9c000,0x00007f394809d000)]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000000
+
+Registers:
+RAX=0x00007f38ec863d50, RBX=0x0000000000000000, RCX=0x00007f3947e702c0, RDX=0x00007f38ec863d58
+RSP=0x00007f3948092800, RBP=0x00007f3948092820, RSI=0x0000000000000001, RDI=0x0000000000000010
+R8 =0x000000000000000b, R9 =0x0000000000000018, R10=0x0000000000000006, R11=0x0000000000000079
+R12=0x00007f38ec863d00, R13=0x00007f38ec863cf0, R14=0x00007f38ec863880, R15=0x00007f38ec863880
+RIP=0x00007f3946963587, EFLAGS=0x0000000000010202, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f3948092800)
+0x00007f3948092800:   00007f38ec863880 00007f38ec863cf0
+0x00007f3948092810:   00007f38ec863cf0 0000000000000003
+0x00007f3948092820:   00007f3948092850 00007f39469632a1
+0x00007f3948092830:   00007f3900000009 00007f38ec8638a0
+0x00007f3948092840:   00007f38ec8638a0 0000000000000079
+0x00007f3948092850:   00007f3948092890 00007f3946e29aad
+0x00007f3948092860:   00000079ec862b40 00007f38ec863280
+0x00007f3948092870:   00007f394000b6d0 00007f38ec863280
+0x00007f3948092880:   00007f39480931e8 00007f394000b000
+0x00007f3948092890:   00007f3948092910 00007f3946f2a1f9
+0x00007f39480928a0:   00007f38ec863220 0000000000000002
+0x00007f39480928b0:   00007f39480928e0 00007f3946e297ed
+0x00007f39480928c0:   00007f3948092f40 00007f38ec863220
+0x00007f39480928d0:   00007f3948092900 00007f3946f245f2
+0x00007f39480928e0:   00007f3948092900 00007f38ec863280
+0x00007f39480928f0:   00007f394000b6d0 00007f394000b000
+0x00007f3948092900:   00007f39480931e8 00007f394000b000
+0x00007f3948092910:   00007f3948092960 00007f394696e88a
+0x00007f3948092920:   00007f393260e090 00007f3900000000
+0x00007f3948092930:   00000000d82a1188 00007f38ec863280
+0x00007f3948092940:   00007f394000b6d0 00007f394000b000
+0x00007f3948092950:   00007f39480931e8 00007f394000b000
+0x00007f3948092960:   00007f3948092fc0 00007f394696ee7e
+0x00007f3948092970:   0000000000000100 00007f39480929b0
+0x00007f3948092980:   00007f3940004380 0000000086c15848
+0x00007f3948092990:   00007f3940002c60 00007f3946b76858
+0x00007f39480929a0:   00007f3940002c50 00007f3946f89988
+0x00007f39480929b0:   00007f3948092ad0 00007f394697473a
+0x00007f39480929c0:   0000000040008758 4011864b4259d2eb
+0x00007f39480929d0:   0000003000000028 00007f3948092ae0
+0x00007f39480929e0:   00000000d7df8de8 00007f39325699c4
+0x00007f39480929f0:   00007f39326ab490 00007f3900000001 
+
+Instructions: (pc=0x00007f3946963587)
+0x00007f3946963567:   48 83 c2 08 74 07 48 c7 02 00 00 00 00 49 c7 44
+0x00007f3946963577:   24 38 00 00 00 00 41 c6 44 24 40 00 49 8b 5e 18
+0x00007f3946963587:   8b 13 3b 53 04 74 2a 8d 42 01 48 63 d2 4c 89 f6
+0x00007f3946963597:   4c 89 e7 89 03 48 8b 43 18 4c 89 24 d0 e8 87 fd 
+
+Register to memory mapping:
+
+RAX=0x00007f38ec863d50 is an unknown value
+RBX=0x0000000000000000 is an unknown value
+RCX=0x00007f3947e702c0: <offset 0x2182c0> in /lib/x86_64-linux-gnu/libpthread.so.0 at 0x00007f3947c58000
+RDX=0x00007f38ec863d58 is an unknown value
+RSP=0x00007f3948092800 is pointing into the stack for thread: 0x00007f394000b000
+RBP=0x00007f3948092820 is pointing into the stack for thread: 0x00007f394000b000
+RSI=0x0000000000000001 is an unknown value
+RDI=0x0000000000000010 is an unknown value
+R8 =0x000000000000000b is an unknown value
+R9 =0x0000000000000018 is an unknown value
+R10=0x0000000000000006 is an unknown value
+R11=0x0000000000000079 is an unknown value
+R12=0x00007f38ec863d00 is an unknown value
+R13=0x00007f38ec863cf0 is an unknown value
+R14=0x00007f38ec863880 is an unknown value
+R15=0x00007f38ec863880 is an unknown value
+
+
+Stack: [0x00007f3947f9c000,0x00007f394809d000],  sp=0x00007f3948092800,  free space=986k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x503587]  DebugInfoReadStream::read_object_value()+0xd7
+V  [libjvm.so+0x5032a1]  MonitorValue::MonitorValue(DebugInfoReadStream*)+0x31
+V  [libjvm.so+0x9c9aad]  ScopeDesc::decode_monitor_values(int)+0x15d
+V  [libjvm.so+0xaca1f9]  compiledVFrame::monitors() const+0x29
+V  [libjvm.so+0x50e88a]  collect_monitors(compiledVFrame*, GrowableArray<Handle>*)+0x1a
+V  [libjvm.so+0x50ee7e]  Deoptimization::revoke_biases_of_monitors(JavaThread*, frame, RegisterMap*)+0x1ce
+V  [libjvm.so+0x512c54]  Deoptimization::uncommon_trap_inner(JavaThread*, int)+0x1d4
+V  [libjvm.so+0x514591]  Deoptimization::uncommon_trap(JavaThread*, int)+0x11
+v  blob 0x00007f39310456b9
+C  0xd82a112820054263
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+v  blob 0x00007f39310456b9
+J 6290 C2 scala.tools.nsc.typechecker.Typers$Typer.adapt(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Trees$Tree; (798 bytes) @ 0x00007f3932612468 [0x00007f393260eba0+0x38c8]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f3932456ffc [0x00007f39324559a0+0x165c]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 6301 C1 scala.tools.nsc.typechecker.Typers$Typer.typedArg(Lscala/reflect/internal/Trees$Tree;IILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (232 bytes) @ 0x00007f393251b04c [0x00007f3932516f00+0x414c]
+J 5193 C1 scala.tools.nsc.typechecker.PatternTypers$PatternTyper$class.typedArgWithFormal$1(Lscala/tools/nsc/typechecker/Typers$Typer;Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Types$Type;I)Lscala/reflect/internal/Trees$Tree; (84 bytes) @ 0x00007f39320a853c [0x00007f39320a6be0+0x195c]
+J 5205 C1 scala.tools.nsc.typechecker.PatternTypers$PatternTyper$$anonfun$2.apply(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (13 bytes) @ 0x00007f39320acfec [0x00007f39320acce0+0x30c]
+J 4941 C1 scala.runtime.Tuple2Zipped$$anonfun$map$extension$1.apply(Ljava/lang/Object;)Lscala/collection/mutable/Builder; (62 bytes) @ 0x00007f3931fa9a8c [0x00007f3931fa99c0+0xcc]
+J 4940 C1 scala.runtime.Tuple2Zipped$$anonfun$map$extension$1.apply(Ljava/lang/Object;)Ljava/lang/Object; (6 bytes) @ 0x00007f3931fa8864 [0x00007f3931fa8800+0x64]
+J 4785 C2 scala.collection.immutable.List.foreach(Lscala/Function1;)V (32 bytes) @ 0x00007f3931ecd5f4 [0x00007f3931ecd540+0xb4]
+J 5419 C1 scala.runtime.Tuple2Zipped$.map$extension(Lscala/Tuple2;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object; (113 bytes) @ 0x00007f39321a3f0c [0x00007f39321a3240+0xccc]
+J 5457 C1 scala.tools.nsc.typechecker.PatternTypers$PatternTyper$class.typedArgsForFormals(Lscala/tools/nsc/typechecker/Typers$Typer;Lscala/collection/immutable/List;Lscala/collection/immutable/List;I)Lscala/collection/immutable/List; (193 bytes) @ 0x00007f39321bcc1c [0x00007f39321bb1c0+0x1a5c]
+J 5340 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$handleMonomorphicCall$1(Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;ILscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/internal/Types$MethodType;)Lscala/reflect/internal/Trees$Tree; (248 bytes) @ 0x00007f393213fc4c [0x00007f393213f420+0x82c]
+J 4818 C1 scala.tools.nsc.typechecker.Typers$Typer.doTypedApply(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (846 bytes) @ 0x00007f3931f336fc [0x00007f3931f2f3a0+0x435c]
+J 5430 C1 scala.tools.nsc.typechecker.Typers$Typer$$anonfun$98.apply(Ljava/lang/Object;)Ljava/lang/Object; (9 bytes) @ 0x00007f39321a73ec [0x00007f39321a7340+0xac]
+J 4356 C1 scala.tools.nsc.typechecker.Typers$Typer.silent(Lscala/Function1;ZLscala/reflect/internal/Trees$Tree;)Lscala/tools/nsc/typechecker/Typers$SilentResult; (809 bytes) @ 0x00007f3931212b84 [0x00007f3931211c20+0xf64]
+J 5527 C1 scala.tools.nsc.typechecker.Typers$Typer.tryTypedApply$1(Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (156 bytes) @ 0x00007f39321fd464 [0x00007f39321fc580+0xee4]
+J 6589 C1 scala.tools.nsc.typechecker.Typers$Typer.normalTypedApply$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (521 bytes) @ 0x00007f39326cbcbc [0x00007f39326c7b40+0x417c]
+J 5267 C1 scala.tools.nsc.typechecker.Typers$Typer.typedApply$1(Lscala/reflect/internal/Trees$Apply;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (323 bytes) @ 0x00007f39320d7344 [0x00007f39320d6f20+0x424]
+J 5173 C1 scala.tools.nsc.typechecker.Typers$Typer.typedInAnyMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (302 bytes) @ 0x00007f3932094fbc [0x00007f3932093180+0x1e3c]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f3931263144 [0x00007f3931262460+0xce4]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 6301 C1 scala.tools.nsc.typechecker.Typers$Typer.typedArg(Lscala/reflect/internal/Trees$Tree;IILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (232 bytes) @ 0x00007f393251b04c [0x00007f3932516f00+0x414c]
+J 5193 C1 scala.tools.nsc.typechecker.PatternTypers$PatternTyper$class.typedArgWithFormal$1(Lscala/tools/nsc/typechecker/Typers$Typer;Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Types$Type;I)Lscala/reflect/internal/Trees$Tree; (84 bytes) @ 0x00007f39320a853c [0x00007f39320a6be0+0x195c]
+J 5205 C1 scala.tools.nsc.typechecker.PatternTypers$PatternTyper$$anonfun$2.apply(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (13 bytes) @ 0x00007f39320acfec [0x00007f39320acce0+0x30c]
+J 4941 C1 scala.runtime.Tuple2Zipped$$anonfun$map$extension$1.apply(Ljava/lang/Object;)Lscala/collection/mutable/Builder; (62 bytes) @ 0x00007f3931fa9a8c [0x00007f3931fa99c0+0xcc]
+J 4940 C1 scala.runtime.Tuple2Zipped$$anonfun$map$extension$1.apply(Ljava/lang/Object;)Ljava/lang/Object; (6 bytes) @ 0x00007f3931fa8864 [0x00007f3931fa8800+0x64]
+J 4785 C2 scala.collection.immutable.List.foreach(Lscala/Function1;)V (32 bytes) @ 0x00007f3931ecd5f4 [0x00007f3931ecd540+0xb4]
+J 5419 C1 scala.runtime.Tuple2Zipped$.map$extension(Lscala/Tuple2;Lscala/Function2;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object; (113 bytes) @ 0x00007f39321a3f0c [0x00007f39321a3240+0xccc]
+J 5457 C1 scala.tools.nsc.typechecker.PatternTypers$PatternTyper$class.typedArgsForFormals(Lscala/tools/nsc/typechecker/Typers$Typer;Lscala/collection/immutable/List;Lscala/collection/immutable/List;I)Lscala/collection/immutable/List; (193 bytes) @ 0x00007f39321bcc1c [0x00007f39321bb1c0+0x1a5c]
+J 5340 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$handleMonomorphicCall$1(Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;ILscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/internal/Types$MethodType;)Lscala/reflect/internal/Trees$Tree; (248 bytes) @ 0x00007f393213fc4c [0x00007f393213f420+0x82c]
+J 4818 C1 scala.tools.nsc.typechecker.Typers$Typer.doTypedApply(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (846 bytes) @ 0x00007f3931f336fc [0x00007f3931f2f3a0+0x435c]
+J 5430 C1 scala.tools.nsc.typechecker.Typers$Typer$$anonfun$98.apply(Ljava/lang/Object;)Ljava/lang/Object; (9 bytes) @ 0x00007f39321a73ec [0x00007f39321a7340+0xac]
+J 4356 C1 scala.tools.nsc.typechecker.Typers$Typer.silent(Lscala/Function1;ZLscala/reflect/internal/Trees$Tree;)Lscala/tools/nsc/typechecker/Typers$SilentResult; (809 bytes) @ 0x00007f3931212184 [0x00007f3931211c20+0x564]
+J 5527 C1 scala.tools.nsc.typechecker.Typers$Typer.tryTypedApply$1(Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (156 bytes) @ 0x00007f39321fd464 [0x00007f39321fc580+0xee4]
+J 6589 C1 scala.tools.nsc.typechecker.Typers$Typer.normalTypedApply$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;Lscala/collection/immutable/List;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (521 bytes) @ 0x00007f39326cbcbc [0x00007f39326c7b40+0x417c]
+J 5267 C1 scala.tools.nsc.typechecker.Typers$Typer.typedApply$1(Lscala/reflect/internal/Trees$Apply;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (323 bytes) @ 0x00007f39320d7344 [0x00007f39320d6f20+0x424]
+J 5173 C1 scala.tools.nsc.typechecker.Typers$Typer.typedInAnyMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (302 bytes) @ 0x00007f3932094fbc [0x00007f3932093180+0x1e3c]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f3931263144 [0x00007f3931262460+0xce4]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+j  scala.tools.nsc.typechecker.Typers$Typer.typedAssign$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree;+243
+J 5635 C1 scala.tools.nsc.typechecker.Typers$Typer.typedOutsidePatternMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (689 bytes) @ 0x00007f39319ab9a4 [0x00007f39319a5b00+0x5ea4]
+J 5173 C1 scala.tools.nsc.typechecker.Typers$Typer.typedInAnyMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (302 bytes) @ 0x00007f3932094a34 [0x00007f3932093180+0x18b4]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f3931263144 [0x00007f3931262460+0xce4]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+j  scala.tools.nsc.typechecker.Typers$Typer.typedBlock(Lscala/reflect/internal/Trees$Block;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Block;+555
+J 5635 C1 scala.tools.nsc.typechecker.Typers$Typer.typedOutsidePatternMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (689 bytes) @ 0x00007f39319a67d4 [0x00007f39319a5b00+0xcd4]
+J 5173 C1 scala.tools.nsc.typechecker.Typers$Typer.typedInAnyMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (302 bytes) @ 0x00007f3932094a34 [0x00007f3932093180+0x18b4]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f3931263144 [0x00007f3931262460+0xce4]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 5528 C1 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (14 bytes) @ 0x00007f393220967c [0x00007f3932208cc0+0x9bc]
+j  scala.tools.nsc.typechecker.Typers$Typer.typedIf$1(Lscala/reflect/internal/Trees$If;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$If;+118
+J 5635 C1 scala.tools.nsc.typechecker.Typers$Typer.typedOutsidePatternMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (689 bytes) @ 0x00007f39319abfb4 [0x00007f39319a5b00+0x64b4]
+J 5173 C1 scala.tools.nsc.typechecker.Typers$Typer.typedInAnyMode$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;Lscala/runtime/VolatileObjectRef;)Lscala/reflect/internal/Trees$Tree; (302 bytes) @ 0x00007f3932094a34 [0x00007f3932093180+0x18b4]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f3931263144 [0x00007f3931262460+0xce4]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 6674 C1 scala.tools.nsc.typechecker.Typers$Typer.computeType(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Types$Type; (128 bytes) @ 0x00007f39327035ac [0x00007f3932701600+0x1fac]
+J 6326 C1 scala.tools.nsc.typechecker.Namers$Namer.assignTypeToTree(Lscala/reflect/internal/Trees$ValOrDefDef;Lscala/tools/nsc/typechecker/Typers$Typer;Lscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Types$Type; (87 bytes) @ 0x00007f393254246c [0x00007f3932541f00+0x56c]
+J 5958 C1 scala.tools.nsc.typechecker.Namers$Namer.methodSig(Lscala/reflect/internal/Trees$DefDef;)Lscala/reflect/internal/Types$Type; (717 bytes) @ 0x00007f39323719bc [0x00007f393236aca0+0x6d1c]
+J 5304 C1 scala.tools.nsc.typechecker.Namers$Namer.getSig$1(Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Types$Type; (169 bytes) @ 0x00007f3932106694 [0x00007f3932105900+0xd94]
+J 5333 C1 scala.tools.nsc.typechecker.Namers$Namer.typeSig(Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Types$Type; (88 bytes) @ 0x00007f39321318ec [0x00007f39321315a0+0x34c]
+J 5224 C1 scala.tools.nsc.typechecker.Namers$Namer$$anonfun$monoTypeCompleter$1$$anonfun$apply$1.apply$mcV$sp()V (266 bytes) @ 0x00007f39320bea74 [0x00007f39320be960+0x114]
+J 5222 C1 scala.tools.nsc.typechecker.Namers$Namer$$anonfun$monoTypeCompleter$1$$anonfun$apply$1.apply()Ljava/lang/Object; (8 bytes) @ 0x00007f39320b50fc [0x00007f39320b4f40+0x1bc]
+J 5195 C1 scala.tools.nsc.typechecker.Namers$Namer.scala$tools$nsc$typechecker$Namers$Namer$$logAndValidate(Lscala/reflect/internal/Symbols$Symbol;Lscala/Function0;)V (314 bytes) @ 0x00007f39320a1c54 [0x00007f39320a0900+0x1354]
+J 4973 C1 scala.tools.nsc.typechecker.Namers$Namer$$anonfun$monoTypeCompleter$1.apply(Ljava/lang/Object;)Ljava/lang/Object; (12 bytes) @ 0x00007f3931fb6adc [0x00007f3931fb69c0+0x11c]
+J 5296 C1 scala.tools.nsc.typechecker.Namers$$anon$1.completeImpl(Lscala/reflect/internal/Symbols$Symbol;)V (12 bytes) @ 0x00007f39321025c4 [0x00007f39321024c0+0x104]
+J 5294 C1 scala.tools.nsc.typechecker.Namers$LockingTypeCompleter$class.complete(Lscala/tools/nsc/typechecker/Namers$LockingTypeCompleter;Lscala/reflect/internal/Symbols$Symbol;)V (83 bytes) @ 0x00007f39321032ac [0x00007f3932102f00+0x3ac]
+J 5295 C1 scala.tools.nsc.typechecker.Namers$$anon$1.complete(Lscala/reflect/internal/Symbols$Symbol;)V (6 bytes) @ 0x00007f39320df37c [0x00007f39320df300+0x7c]
+J 969 C2 scala.reflect.internal.Symbols$Symbol.info()Lscala/reflect/internal/Types$Type; (369 bytes) @ 0x00007f39312eb814 [0x00007f39312eb6e0+0x134]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f3931262d2c [0x00007f3931262460+0x8cc]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 5566 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedStat$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Symbols$Symbol;ZZ)Lscala/reflect/internal/Trees$Tree; (416 bytes) @ 0x00007f393190e83c [0x00007f393190bbc0+0x2c7c]
+J 5774 C1 scala.tools.nsc.typechecker.Typers$Typer$$anonfun$65.apply(Ljava/lang/Object;)Ljava/lang/Object; (9 bytes) @ 0x00007f39322a7f5c [0x00007f39322a7ca0+0x2bc]
+J 2714 C2 scala.collection.immutable.List.loop$1(Lscala/collection/mutable/ListBuffer;Lscala/collection/immutable/List;Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List; (139 bytes) @ 0x00007f393195a43c [0x00007f393195a1e0+0x25c]
+J 6656 C1 scala.tools.nsc.typechecker.Typers$Typer.typedStats(Lscala/collection/immutable/List;Lscala/reflect/internal/Symbols$Symbol;)Lscala/collection/immutable/List; (121 bytes) @ 0x00007f39326f5ecc [0x00007f39326f5580+0x94c]
+j  scala.tools.nsc.typechecker.Typers$Typer.typedTemplate(Lscala/reflect/internal/Trees$Template;Lscala/collection/immutable/List;)Lscala/reflect/internal/Trees$Template;+1043
+j  scala.tools.nsc.typechecker.Typers$Typer.typedClassDef(Lscala/reflect/internal/Trees$ClassDef;)Lscala/reflect/internal/Trees$Tree;+143
+J 5604 C1 scala.tools.nsc.typechecker.Typers$Typer.typedMemberDef$1(Lscala/reflect/internal/Trees$MemberDef;Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Symbols$Symbol;)Lscala/reflect/internal/Trees$Tree; (296 bytes) @ 0x00007f3931844e0c [0x00007f3931842b20+0x22ec]
+J 5643 C1 scala.tools.nsc.typechecker.Typers$Typer.typed1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (114 bytes) @ 0x00007f39312630dc [0x00007f3931262460+0xc7c]
+J 6152 C1 scala.tools.nsc.typechecker.Typers$Typer.runTyper$1(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (294 bytes) @ 0x00007f39324568f4 [0x00007f39324559a0+0xf54]
+J 6747 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f39327832d4 [0x00007f39327830c0+0x214]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 5566 C1 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedStat$1(Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Symbols$Symbol;ZZ)Lscala/reflect/internal/Trees$Tree; (416 bytes) @ 0x00007f393190e83c [0x00007f393190bbc0+0x2c7c]
+J 5774 C1 scala.tools.nsc.typechecker.Typers$Typer$$anonfun$65.apply(Ljava/lang/Object;)Ljava/lang/Object; (9 bytes) @ 0x00007f39322a7f5c [0x00007f39322a7ca0+0x2bc]
+J 2714 C2 scala.collection.immutable.List.loop$1(Lscala/collection/mutable/ListBuffer;Lscala/collection/immutable/List;Lscala/collection/immutable/List;Lscala/Function1;)Lscala/collection/immutable/List; (139 bytes) @ 0x00007f393195a43c [0x00007f393195a1e0+0x25c]
+J 6656 C1 scala.tools.nsc.typechecker.Typers$Typer.typedStats(Lscala/collection/immutable/List;Lscala/reflect/internal/Symbols$Symbol;)Lscala/collection/immutable/List; (121 bytes) @ 0x00007f39326f5ecc [0x00007f39326f5580+0x94c]
+j  scala.tools.nsc.typechecker.Typers$Typer.typedPackageDef$1(Lscala/reflect/internal/Trees$PackageDef;Lscala/reflect/internal/Trees$Tree;Lscala/reflect/internal/Symbols$Symbol;)Lscala/reflect/internal/Trees$PackageDef;+143
+J 6292 C2 scala.tools.nsc.typechecker.Typers$Typer.scala$tools$nsc$typechecker$Typers$Typer$$typedInternal(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (470 bytes) @ 0x00007f393271edc4 [0x00007f393271c6c0+0x2704]
+J 5983 C2 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;ILscala/reflect/internal/Types$Type;)Lscala/reflect/internal/Trees$Tree; (227 bytes) @ 0x00007f393239ad6c [0x00007f393239ace0+0x8c]
+J 5669 C1 scala.tools.nsc.typechecker.Typers$Typer.typed(Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Trees$Tree; (27 bytes) @ 0x00007f393184f62c [0x00007f393184e9c0+0xc6c]
+j  scala.tools.nsc.typechecker.Analyzer$typerFactory$$anon$3.apply(Lscala/tools/nsc/CompilationUnits$CompilationUnit;)V+70
+j  scala.tools.nsc.Global$GlobalPhase$$anonfun$applyPhase$1.apply$mcV$sp()V+8
+j  scala.tools.nsc.Global$GlobalPhase.withCurrentUnit(Lscala/tools/nsc/CompilationUnits$CompilationUnit;Lscala/Function0;)V+182
+j  scala.tools.nsc.Global$GlobalPhase.applyPhase(Lscala/tools/nsc/CompilationUnits$CompilationUnit;)V+11
+j  scala.tools.nsc.typechecker.Analyzer$typerFactory$$anon$3$$anonfun$run$1.apply(Lscala/tools/nsc/CompilationUnits$CompilationUnit;)V+5
+j  scala.tools.nsc.typechecker.Analyzer$typerFactory$$anon$3$$anonfun$run$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+J 1160 C1 scala.collection.AbstractIterator.foreach(Lscala/Function1;)V (6 bytes) @ 0x00007f393133cf14 [0x00007f393133cd00+0x214]
+j  scala.tools.nsc.typechecker.Analyzer$typerFactory$$anon$3.run()V+79
+j  scala.tools.nsc.Global$Run.compileUnitsInternal(Lscala/collection/immutable/List;Lscala/reflect/internal/Phase;)V+144
+j  scala.tools.nsc.Global$Run.compileUnits(Lscala/collection/immutable/List;Lscala/reflect/internal/Phase;)V+3
+j  scala.tools.nsc.Global$Run.compileSources(Lscala/collection/immutable/List;)V+82
+j  scala.tools.nsc.Global$Run.compile(Lscala/collection/immutable/List;)V+84
+j  scala.tools.nsc.Driver.doCompile(Lscala/tools/nsc/Global;)V+58
+j  scala.tools.nsc.MainClass.doCompile(Lscala/tools/nsc/Global;)V+34
+j  scala.tools.nsc.Driver.process([Ljava/lang/String;)V+128
+j  scala.tools.nsc.Driver.main([Ljava/lang/String;)V+2
+j  scala.tools.nsc.Main.main([Ljava/lang/String;)V+4
+v  ~StubRoutines::call_stub
+j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+56
+j  scala_maven_executions.MainHelper.runMain(Ljava/lang/String;Ljava/util/List;Ljava/lang/ClassLoader;)V+111
+j  scala_maven_executions.MainWithArgsInFile.main([Ljava/lang/String;)V+34
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f39400d4000 JavaThread "Service Thread" daemon [_thread_blocked, id=10533, stack(0x00007f390936a000,0x00007f390946b000)]
+  0x00007f39400c9000 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=10532, stack(0x00007f390946b000,0x00007f390956c000)]
+  0x00007f39400c7000 JavaThread "C2 CompilerThread2" daemon [_thread_in_native, id=10531, stack(0x00007f390956c000,0x00007f390966d000)]
+  0x00007f39400c5000 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=10530, stack(0x00007f390966d000,0x00007f390976e000)]
+  0x00007f39400c2000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=10529, stack(0x00007f390976e000,0x00007f390986f000)]
+  0x00007f39400c0800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=10528, stack(0x00007f390986f000,0x00007f3909970000)]
+  0x00007f394008e000 JavaThread "Finalizer" daemon [_thread_blocked, id=10527, stack(0x00007f390a334000,0x00007f390a435000)]
+  0x00007f394008b800 JavaThread "Reference Handler" daemon [_thread_blocked, id=10526, stack(0x00007f390a435000,0x00007f390a536000)]
+=>0x00007f394000b000 JavaThread "main" [_thread_in_vm, id=10515, stack(0x00007f3947f9c000,0x00007f394809d000)]
+
+Other Threads:
+  0x00007f3940081800 VMThread [stack: 0x00007f390a536000,0x00007f390a637000] [id=10525]
+  0x00007f39400d9000 WatcherThread [stack: 0x00007f3909269000,0x00007f390936a000] [id=10534]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 79872K, used 26138K [0x00000000d6f80000, 0x00000000df580000, 0x0000000100000000)
+  eden space 74752K, 28% used [0x00000000d6f80000,0x00000000d8407848,0x00000000db880000)
+  from space 5120K, 99% used [0x00000000df080000,0x00000000df57f378,0x00000000df580000)
+  to   space 5120K, 0% used [0x00000000deb80000,0x00000000deb80000,0x00000000df080000)
+ ParOldGen       total 110080K, used 43795K [0x0000000084e00000, 0x000000008b980000, 0x00000000d6f80000)
+  object space 110080K, 39% used [0x0000000084e00000,0x00000000878c4f20,0x000000008b980000)
+ Metaspace       used 25876K, capacity 25923K, committed 26112K, reserved 1071104K
+  class space    used 3532K, capacity 3554K, committed 3584K, reserved 1048576K
+
+Card table byte_map: [0x00007f39448f6000,0x00007f3944cd0000] byte_map_base: 0x00007f39444cf000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f39474340a0
+ Begin Bits: [0x00007f390c270000, 0x00007f390e138000)
+ End Bits:   [0x00007f390e138000, 0x00007f3910000000)
+
+Polling page: 0x00007f39480a0000
+
+CodeCache: size=245760Kb used=24313Kb max_used=24313Kb free=221446Kb
+ bounds [0x00007f3931000000, 0x00007f39327d0000, 0x00007f3940000000]
+ total_blobs=6542 nmethods=6212 adapters=242
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 4.377 Thread 0x00007f39400c9000 6786       3       scala.math.Numeric$IntIsIntegral$::zero (5 bytes)
+Event: 4.377 Thread 0x00007f39400c9000 nmethod 6786 0x00007f39327cdbd0 code [0x00007f39327cdd60, 0x00007f39327ce0c8]
+Event: 4.377 Thread 0x00007f39400c9000 6787       3       scala.math.Numeric$class::zero (8 bytes)
+Event: 4.378 Thread 0x00007f39400c9000 nmethod 6787 0x00007f39327ce2d0 code [0x00007f39327ce440, 0x00007f39327ce648]
+Event: 4.380 Thread 0x00007f39400c9000 6789       3       scala.math.Numeric$IntIsIntegral$::mkOrderingOps (6 bytes)
+Event: 4.380 Thread 0x00007f39400c9000 nmethod 6789 0x00007f39327ce710 code [0x00007f39327ce8a0, 0x00007f39327cebf0]
+Event: 4.380 Thread 0x00007f39400c9000 6790       3       scala.math.Ordering$class::mkOrderingOps (10 bytes)
+Event: 4.380 Thread 0x00007f39400c9000 nmethod 6790 0x00007f39327ced90 code [0x00007f39327cef00, 0x00007f39327cf1d0]
+Event: 4.380 Thread 0x00007f39400c9000 6791       3       scala.collection.mutable.HashTable$class::scala$collection$mutable$HashTable$$lastPopulatedIndex (35 bytes)
+Event: 4.381 Thread 0x00007f39400c9000 nmethod 6791 0x00007f39327cf310 code [0x00007f39327cf4a0, 0x00007f39327cf878]
+
+GC Heap History (10 events):
+Event: 0.504 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 36864K, used 31744K [0x00000000d6f80000, 0x00000000d9880000, 0x0000000100000000)
+  eden space 31744K, 100% used [0x00000000d6f80000,0x00000000d8e80000,0x00000000d8e80000)
+  from space 5120K, 0% used [0x00000000d9380000,0x00000000d9380000,0x00000000d9880000)
+  to   space 5120K, 0% used [0x00000000d8e80000,0x00000000d8e80000,0x00000000d9380000)
+ ParOldGen       total 84992K, used 0K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 0% used [0x0000000084e00000,0x0000000084e00000,0x000000008a100000)
+ Metaspace       used 12304K, capacity 12350K, committed 12672K, reserved 1060864K
+  class space    used 1820K, capacity 1826K, committed 1920K, reserved 1048576K
+Event: 0.520 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 36864K, used 5088K [0x00000000d6f80000, 0x00000000db780000, 0x0000000100000000)
+  eden space 31744K, 0% used [0x00000000d6f80000,0x00000000d6f80000,0x00000000d8e80000)
+  from space 5120K, 99% used [0x00000000d8e80000,0x00000000d9378060,0x00000000d9380000)
+  to   space 5120K, 0% used [0x00000000db280000,0x00000000db280000,0x00000000db780000)
+ ParOldGen       total 84992K, used 12611K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 14% used [0x0000000084e00000,0x0000000085a50d18,0x000000008a100000)
+ Metaspace       used 12304K, capacity 12350K, committed 12672K, reserved 1060864K
+  class space    used 1820K, capacity 1826K, committed 1920K, reserved 1048576K
+}
+Event: 1.183 GC heap before
+{Heap before GC invocations=2 (full 0):
+ PSYoungGen      total 36864K, used 36832K [0x00000000d6f80000, 0x00000000db780000, 0x0000000100000000)
+  eden space 31744K, 100% used [0x00000000d6f80000,0x00000000d8e80000,0x00000000d8e80000)
+  from space 5120K, 99% used [0x00000000d8e80000,0x00000000d9378060,0x00000000d9380000)
+  to   space 5120K, 0% used [0x00000000db280000,0x00000000db280000,0x00000000db780000)
+ ParOldGen       total 84992K, used 12611K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 14% used [0x0000000084e00000,0x0000000085a50d18,0x000000008a100000)
+ Metaspace       used 18564K, capacity 18622K, committed 18816K, reserved 1064960K
+  class space    used 2655K, capacity 2658K, committed 2688K, reserved 1048576K
+Event: 1.203 GC heap after
+Heap after GC invocations=2 (full 0):
+ PSYoungGen      total 68608K, used 5088K [0x00000000d6f80000, 0x00000000db780000, 0x0000000100000000)
+  eden space 63488K, 0% used [0x00000000d6f80000,0x00000000d6f80000,0x00000000dad80000)
+  from space 5120K, 99% used [0x00000000db280000,0x00000000db778040,0x00000000db780000)
+  to   space 5120K, 0% used [0x00000000dad80000,0x00000000dad80000,0x00000000db280000)
+ ParOldGen       total 84992K, used 26205K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 30% used [0x0000000084e00000,0x0000000086797580,0x000000008a100000)
+ Metaspace       used 18564K, capacity 18622K, committed 18816K, reserved 1064960K
+  class space    used 2655K, capacity 2658K, committed 2688K, reserved 1048576K
+}
+Event: 1.810 GC heap before
+{Heap before GC invocations=3 (full 0):
+ PSYoungGen      total 68608K, used 33611K [0x00000000d6f80000, 0x00000000db780000, 0x0000000100000000)
+  eden space 63488K, 44% used [0x00000000d6f80000,0x00000000d8b5add0,0x00000000dad80000)
+  from space 5120K, 99% used [0x00000000db280000,0x00000000db778040,0x00000000db780000)
+  to   space 5120K, 0% used [0x00000000dad80000,0x00000000dad80000,0x00000000db280000)
+ ParOldGen       total 84992K, used 26205K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 30% used [0x0000000084e00000,0x0000000086797580,0x000000008a100000)
+ Metaspace       used 21009K, capacity 21027K, committed 21248K, reserved 1067008K
+  class space    used 2934K, capacity 2946K, committed 3072K, reserved 1048576K
+Event: 1.827 GC heap after
+Heap after GC invocations=3 (full 0):
+ PSYoungGen      total 68608K, used 5088K [0x00000000d6f80000, 0x00000000df580000, 0x0000000100000000)
+  eden space 63488K, 0% used [0x00000000d6f80000,0x00000000d6f80000,0x00000000dad80000)
+  from space 5120K, 99% used [0x00000000dad80000,0x00000000db278020,0x00000000db280000)
+  to   space 5120K, 0% used [0x00000000df080000,0x00000000df080000,0x00000000df580000)
+ ParOldGen       total 84992K, used 33169K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 39% used [0x0000000084e00000,0x0000000086e64568,0x000000008a100000)
+ Metaspace       used 21009K, capacity 21027K, committed 21248K, reserved 1067008K
+  class space    used 2934K, capacity 2946K, committed 3072K, reserved 1048576K
+}
+Event: 1.827 GC heap before
+{Heap before GC invocations=4 (full 1):
+ PSYoungGen      total 68608K, used 5088K [0x00000000d6f80000, 0x00000000df580000, 0x0000000100000000)
+  eden space 63488K, 0% used [0x00000000d6f80000,0x00000000d6f80000,0x00000000dad80000)
+  from space 5120K, 99% used [0x00000000dad80000,0x00000000db278020,0x00000000db280000)
+  to   space 5120K, 0% used [0x00000000df080000,0x00000000df080000,0x00000000df580000)
+ ParOldGen       total 84992K, used 33169K [0x0000000084e00000, 0x000000008a100000, 0x00000000d6f80000)
+  object space 84992K, 39% used [0x0000000084e00000,0x0000000086e64568,0x000000008a100000)
+ Metaspace       used 21009K, capacity 21027K, committed 21248K, reserved 1067008K
+  class space    used 2934K, capacity 2946K, committed 3072K, reserved 1048576K
+Event: 2.039 GC heap after
+Heap after GC invocations=4 (full 1):
+ PSYoungGen      total 68608K, used 0K [0x00000000d6f80000, 0x00000000df580000, 0x0000000100000000)
+  eden space 63488K, 0% used [0x00000000d6f80000,0x00000000d6f80000,0x00000000dad80000)
+  from space 5120K, 0% used [0x00000000dad80000,0x00000000dad80000,0x00000000db280000)
+  to   space 5120K, 0% used [0x00000000df080000,0x00000000df080000,0x00000000df580000)
+ ParOldGen       total 110080K, used 37376K [0x0000000084e00000, 0x000000008b980000, 0x00000000d6f80000)
+  object space 110080K, 33% used [0x0000000084e00000,0x0000000087280258,0x000000008b980000)
+ Metaspace       used 21009K, capacity 21027K, committed 21248K, reserved 1067008K
+  class space    used 2934K, capacity 2946K, committed 3072K, reserved 1048576K
+}
+Event: 4.017 GC heap before
+{Heap before GC invocations=5 (full 1):
+ PSYoungGen      total 68608K, used 63488K [0x00000000d6f80000, 0x00000000df580000, 0x0000000100000000)
+  eden space 63488K, 100% used [0x00000000d6f80000,0x00000000dad80000,0x00000000dad80000)
+  from space 5120K, 0% used [0x00000000dad80000,0x00000000dad80000,0x00000000db280000)
+  to   space 5120K, 0% used [0x00000000df080000,0x00000000df080000,0x00000000df580000)
+ ParOldGen       total 110080K, used 37376K [0x0000000084e00000, 0x000000008b980000, 0x00000000d6f80000)
+  object space 110080K, 33% used [0x0000000084e00000,0x0000000087280258,0x000000008b980000)
+ Metaspace       used 25543K, capacity 25571K, committed 25856K, reserved 1071104K
+  class space    used 3520K, capacity 3522K, committed 3584K, reserved 1048576K
+Event: 4.030 GC heap after
+Heap after GC invocations=5 (full 1):
+ PSYoungGen      total 79872K, used 5116K [0x00000000d6f80000, 0x00000000df580000, 0x0000000100000000)
+  eden space 74752K, 0% used [0x00000000d6f80000,0x00000000d6f80000,0x00000000db880000)
+  from space 5120K, 99% used [0x00000000df080000,0x00000000df57f378,0x00000000df580000)
+  to   space 5120K, 0% used [0x00000000deb80000,0x00000000deb80000,0x00000000df080000)
+ ParOldGen       total 110080K, used 43795K [0x0000000084e00000, 0x000000008b980000, 0x00000000d6f80000)
+  object space 110080K, 39% used [0x0000000084e00000,0x00000000878c4f20,0x000000008b980000)
+ Metaspace       used 25543K, capacity 25571K, committed 25856K, reserved 1071104K
+  class space    used 3520K, capacity 3522K, committed 3584K, reserved 1048576K
+}
+
+Deoptimization events (10 events):
+Event: 4.351 Thread 0x00007f394000b000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f39321af9c0 method=scala.reflect.internal.Types$class.isRawType(Lscala/reflect/internal/SymbolTable;Lscala/reflect/internal/Types$Type;)Z @ 4
+Event: 4.351 Thread 0x00007f394000b000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f39321af9c0 method=scala.reflect.internal.Types$class.isRawType(Lscala/reflect/internal/SymbolTable;Lscala/reflect/internal/Types$Type;)Z @ 4
+Event: 4.351 Thread 0x00007f394000b000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3931733670 method=scala.reflect.internal.tpe.CommonOwners$CommonOwnerMap.register(Lscala/reflect/internal/Symbols$Symbol;)V @ 64
+Event: 4.352 Thread 0x00007f394000b000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f39321af9c0 method=scala.reflect.internal.Types$class.isRawType(Lscala/reflect/internal/SymbolTable;Lscala/reflect/internal/Types$Type;)Z @ 4
+Event: 4.352 Thread 0x00007f394000b000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3931733670 method=scala.reflect.internal.tpe.CommonOwners$CommonOwnerMap.register(Lscala/reflect/internal/Symbols$Symbol;)V @ 64
+Event: 4.352 Thread 0x00007f394000b000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3931733670 method=scala.reflect.internal.tpe.CommonOwners$CommonOwnerMap.register(Lscala/reflect/internal/Symbols$Symbol;)V @ 64
+Event: 4.352 Thread 0x00007f394000b000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3931733670 method=scala.reflect.internal.tpe.CommonOwners$CommonOwnerMap.register(Lscala/reflect/internal/Symbols$Symbol;)V @ 64
+Event: 4.356 Thread 0x00007f394000b000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f39320bb7e0 method=scala.reflect.internal.Symbols$Symbol.isLess(Lscala/reflect/internal/Symbols$Symbol;)Z @ 4
+Event: 4.356 Thread 0x00007f394000b000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f39314f3418 method=scala.reflect.internal.Symbols$Symbol.isLess(Lscala/reflect/internal/Symbols$Symbol;)Z @ 4
+Event: 4.381 Thread 0x00007f394000b000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f3932350838 method=scala.reflect.internal.tpe.TypeComparers$class.equalSymsAndPrefixes(Lscala/reflect/internal/SymbolTable;Lscala/reflect/internal/Symbols$Symbol;Lscala/reflect/i
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (7 events):
+Event: 0.029 Thread 0x00007f394000b000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d6f87cb0) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u181/11358/hotspot/src/sh
+Event: 0.029 Thread 0x00007f394000b000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d6f87f98) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u181/11358/hotspot/src/share/vm/prims/jni.c
+Event: 0.116 Thread 0x00007f394000b000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d70cf128) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u181/11358/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 0.116 Thread 0x00007f394000b000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d70cf520) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u181/11358/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 0.117 Thread 0x00007f394000b000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d70d1b70) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u181/11358/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 0.117 Thread 0x00007f394000b000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d70d1f68) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u181/11358/hotspot/src/share/vm/prims/jvm.cpp, line 1435]
+Event: 2.352 Thread 0x00007f394000b000 Implicit null exception at 0x00007f39319c97cc to 0x00007f39319c98d5
+
+Events (10 events):
+Event: 4.358 loading class scala/tools/nsc/typechecker/Typers$Typer$$anonfun$113
+Event: 4.358 loading class scala/tools/nsc/typechecker/Typers$Typer$$anonfun$113 done
+Event: 4.359 loading class scala/tools/nsc/typechecker/Typers$Typer$$anonfun$114
+Event: 4.359 loading class scala/tools/nsc/typechecker/Typers$Typer$$anonfun$114 done
+Event: 4.359 loading class scala/tools/nsc/typechecker/Typers$Typer$$anonfun$adaptCase$1
+Event: 4.359 loading class scala/tools/nsc/typechecker/Typers$Typer$$anonfun$adaptCase$1 done
+Event: 4.381 Thread 0x00007f394000b000 Uncommon trap: trap_request=0xffffff76 fr.pc=0x00007f3932350838
+Event: 4.381 Thread 0x00007f394000b000 DEOPT PACKING pc=0x00007f3932350838 sp=0x00007f3948092bf0
+Event: 4.381 Thread 0x00007f394000b000 DEOPT UNPACKING pc=0x00007f393104573a sp=0x00007f3948092ba8 mode 2
+Event: 4.381 Thread 0x00007f394000b000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x00007f3932612468
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:02 820631                             /usr/lib/jvm/java-8-oracle/jre/bin/java
+00600000-00601000 rw-p 00000000 08:02 820631                             /usr/lib/jvm/java-8-oracle/jre/bin/java
+02356000-02377000 rw-p 00000000 00:00 0                                  [heap]
+84e00000-8b980000 rw-p 00000000 00:00 0 
+8b980000-d6f80000 ---p 00000000 00:00 0 
+d6f80000-df580000 rw-p 00000000 00:00 0 
+df580000-100000000 ---p 00000000 00:00 0 
+100000000-100380000 rw-p 00000000 00:00 0 
+100380000-140000000 ---p 00000000 00:00 0 
+7f38dc000000-7f38dc021000 rw-p 00000000 00:00 0 
+7f38dc021000-7f38e0000000 ---p 00000000 00:00 0 
+7f38e0bff000-7f38e0dff000 rw-p 00000000 00:00 0 
+7f38e0dff000-7f38e0fff000 rw-p 00000000 00:00 0 
+7f38e0fff000-7f38e4000000 rw-p 00000000 00:00 0 
+7f38e4000000-7f38e4fe1000 rw-p 00000000 00:00 0 
+7f38e4fe1000-7f38e8000000 ---p 00000000 00:00 0 
+7f38e8000000-7f38e8021000 rw-p 00000000 00:00 0 
+7f38e8021000-7f38ec000000 ---p 00000000 00:00 0 
+7f38ec000000-7f38ecefc000 rw-p 00000000 00:00 0 
+7f38ecefc000-7f38f0000000 ---p 00000000 00:00 0 
+7f38f0000000-7f38f0dd7000 rw-p 00000000 00:00 0 
+7f38f0dd7000-7f38f4000000 ---p 00000000 00:00 0 
+7f38f4000000-7f38f4021000 rw-p 00000000 00:00 0 
+7f38f4021000-7f38f8000000 ---p 00000000 00:00 0 
+7f38f8000000-7f38f8e08000 rw-p 00000000 00:00 0 
+7f38f8e08000-7f38fc000000 ---p 00000000 00:00 0 
+7f38fc000000-7f38fc021000 rw-p 00000000 00:00 0 
+7f38fc021000-7f3900000000 ---p 00000000 00:00 0 
+7f3900000000-7f3900021000 rw-p 00000000 00:00 0 
+7f3900021000-7f3904000000 ---p 00000000 00:00 0 
+7f3904000000-7f3904021000 rw-p 00000000 00:00 0 
+7f3904021000-7f3908000000 ---p 00000000 00:00 0 
+7f3908000000-7f3908200000 rw-p 00000000 00:00 0 
+7f3908200000-7f3908400000 rw-p 00000000 00:00 0 
+7f3908400000-7f3908411000 r-xp 00000000 08:02 820956                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f3908411000-7f3908610000 ---p 00011000 08:02 820956                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f3908610000-7f3908611000 rw-p 00010000 08:02 820956                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f3908618000-7f390862e000 r-xp 00000000 08:02 820953                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f390862e000-7f390882e000 ---p 00016000 08:02 820953                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f390882e000-7f390882f000 rw-p 00016000 08:02 820953                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f3908836000-7f3908a36000 rw-p 00000000 00:00 0 
+7f3908a36000-7f3908a37000 r--s 0005e000 08:03 2228275                    /home/timothy/.m2/repository/org/deephacks/lmdbjni/lmdbjni-linux64/0.4.6/lmdbjni-linux64-0.4.6.jar
+7f3908a3c000-7f3908a3d000 r--s 00004000 08:03 2229163                    /home/timothy/.m2/repository/org/naokishibata/sleef/fastmath/2.80/fastmath-2.80.jar
+7f3908a43000-7f3908a44000 r--s 0006b000 08:03 2229190                    /home/timothy/.m2/repository/org/jcuda/jcuda-vec/0.0.2/jcuda-vec-0.0.2.jar
+7f3908a4b000-7f3908a4c000 r--s 00043000 08:03 2229188                    /home/timothy/.m2/repository/org/jcuda/jcublas-natives/0.8.0/jcublas-natives-0.8.0-linux-x86_64.jar
+7f3908a4f000-7f3908a50000 r--s 00007000 08:03 2229186                    /home/timothy/.m2/repository/org/jcuda/jcublas/0.8.0/jcublas-0.8.0.jar
+7f3908a50000-7f3908a51000 r--s 00048000 08:03 2229183                    /home/timothy/.m2/repository/org/jcuda/jcuda-natives/0.8.0/jcuda-natives-0.8.0-linux-x86_64.jar
+7f3908a52000-7f3908a55000 r--s 00022000 08:03 2229181                    /home/timothy/.m2/repository/org/jcuda/jcuda/0.8.0/jcuda-0.8.0.jar
+7f3908a55000-7f3908a56000 r--s 0000d000 08:03 2229179                    /home/timothy/.m2/repository/org/jcuda/jcudnn-natives/0.8.0/jcudnn-natives-0.8.0-linux-x86_64.jar
+7f3908a58000-7f3908a5a000 r--s 00008000 08:03 2229177                    /home/timothy/.m2/repository/org/jcuda/jcudnn/0.8.0/jcudnn-0.8.0.jar
+7f3908a5c000-7f3908a61000 r--s 00034000 08:03 2229022                    /home/timothy/.m2/repository/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar
+7f3908a63000-7f3908a65000 r--s 00013000 08:03 2229020                    /home/timothy/.m2/repository/org/deephacks/lmdbjni/lmdbjni/0.4.6/lmdbjni-0.4.6.jar
+7f3908a66000-7f3908a75000 r--s 00136000 08:03 2229018                    /home/timothy/.m2/repository/com/google/protobuf/protobuf-java/3.1.0/protobuf-java-3.1.0.jar
+7f3908a79000-7f3908a7e000 r--s 00041000 08:03 2229016                    /home/timothy/.m2/repository/com/typesafe/config/1.3.2/config-1.3.2.jar
+7f3908a81000-7f3908a83000 r--s 00001000 08:02 820797                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar
+7f3908a89000-7f3908a8b000 r--s 00009000 08:02 820796                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar
+7f3908a8b000-7f3908aa7000 r--s 00393000 08:02 820798                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar
+7f3908aae000-7f3908b43000 r--s 0110e000 08:02 820799                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar
+7f3908b4a000-7f3908b4e000 r--s 0003a000 08:02 820803                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar
+7f3908b54000-7f3908b6f000 r--s 001d4000 08:02 820801                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar
+7f3908b76000-7f3908b80000 r--s 00116000 08:02 820805                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar
+7f3908b87000-7f3908b8c000 r--s 0003f000 08:02 820806                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar
+7f3908b8c000-7f3908b91000 r--s 00084000 08:02 820654                     /usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar
+7f3908b91000-7f3908b96000 r--s 002f9000 08:02 820735                     /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar
+7f3908b9d000-7f3908ba2000 r--s 0009d000 08:02 820794                     /usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar
+7f3908ba5000-7f3908bb8000 r--s 00345000 08:02 820775                     /usr/lib/jvm/java-8-oracle/jre/lib/resources.jar
+7f3908bbc000-7f3908dbc000 rw-p 00000000 00:00 0 
+7f3908dbc000-7f3908fbc000 rw-p 00000000 00:00 0 
+7f3908fbc000-7f3908fc7000 r--s 00094000 08:03 2228308                    /home/timothy/.m2/repository/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.jar
+7f3908fc8000-7f3909020000 r--s 004f0000 08:03 2228325                    /home/timothy/.m2/repository/org/scala-lang/scala-library/2.11.4/scala-library-2.11.4.jar
+7f3909025000-7f3909030000 r--s 0005d000 08:03 2228314                    /home/timothy/.m2/repository/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar
+7f3909036000-7f390908f000 r--s 004f6000 08:03 2228336                    /home/timothy/.m2/repository/org/scala-lang/scala-library/2.11.6/scala-library-2.11.6.jar
+7f3909092000-7f39090de000 r--s 00412000 08:03 2228301                    /home/timothy/.m2/repository/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar
+7f39090e0000-7f3909104000 rw-p 00000000 00:00 0 
+7f3909104000-7f390920a000 r--s 00d84000 08:03 2228293                    /home/timothy/.m2/repository/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar
+7f390920b000-7f3909263000 r--s 00523000 08:03 2229192                    /home/timothy/.m2/repository/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar
+7f3909269000-7f390926a000 ---p 00000000 00:00 0 
+7f390926a000-7f390936a000 rw-p 00000000 00:00 0 
+7f390936a000-7f390936d000 ---p 00000000 00:00 0 
+7f390936d000-7f390946b000 rw-p 00000000 00:00 0 
+7f390946b000-7f390946e000 ---p 00000000 00:00 0 
+7f390946e000-7f390956c000 rw-p 00000000 00:00 0 
+7f390956c000-7f390956f000 ---p 00000000 00:00 0 
+7f390956f000-7f390966d000 rw-p 00000000 00:00 0 
+7f390966d000-7f3909670000 ---p 00000000 00:00 0 
+7f3909670000-7f390976e000 rw-p 00000000 00:00 0 
+7f390976e000-7f3909771000 ---p 00000000 00:00 0 
+7f3909771000-7f390986f000 rw-p 00000000 00:00 0 
+7f390986f000-7f3909872000 ---p 00000000 00:00 0 
+7f3909872000-7f3909970000 rw-p 00000000 00:00 0 
+7f3909970000-7f390a32f000 r--p 00000000 08:02 4202135                    /usr/lib/locale/locale-archive
+7f390a334000-7f390a337000 ---p 00000000 00:00 0 
+7f390a337000-7f390a435000 rw-p 00000000 00:00 0 
+7f390a435000-7f390a438000 ---p 00000000 00:00 0 
+7f390a438000-7f390a536000 rw-p 00000000 00:00 0 
+7f390a536000-7f390a537000 ---p 00000000 00:00 0 
+7f390a537000-7f390c093000 rw-p 00000000 00:00 0 
+7f390c093000-7f390c26d000 r--s 03d6b000 08:02 820737                     /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+7f390c270000-7f3910000000 rw-p 00000000 00:00 0 
+7f3910000000-7f3910021000 rw-p 00000000 00:00 0 
+7f3910021000-7f3914000000 ---p 00000000 00:00 0 
+7f3914000000-7f3914021000 rw-p 00000000 00:00 0 
+7f3914021000-7f3918000000 ---p 00000000 00:00 0 
+7f3918000000-7f3918021000 rw-p 00000000 00:00 0 
+7f3918021000-7f391c000000 ---p 00000000 00:00 0 
+7f391c000000-7f391c021000 rw-p 00000000 00:00 0 
+7f391c021000-7f3920000000 ---p 00000000 00:00 0 
+7f3920000000-7f3920021000 rw-p 00000000 00:00 0 
+7f3920021000-7f3924000000 ---p 00000000 00:00 0 
+7f3924000000-7f3924021000 rw-p 00000000 00:00 0 
+7f3924021000-7f3928000000 ---p 00000000 00:00 0 
+7f3928000000-7f3928021000 rw-p 00000000 00:00 0 
+7f3928021000-7f392c000000 ---p 00000000 00:00 0 
+7f392c000000-7f392c021000 rw-p 00000000 00:00 0 
+7f392c021000-7f3930000000 ---p 00000000 00:00 0 
+7f3930002000-7f3930003000 r--s 0000a000 08:02 820800                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar
+7f3930008000-7f3930009000 r--s 00010000 08:02 820802                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar
+7f3930009000-7f3930dfe000 rw-p 00000000 00:00 0 
+7f3930dfe000-7f3930dff000 ---p 00000000 00:00 0 
+7f3930dff000-7f3930eff000 rw-p 00000000 00:00 0 
+7f3930eff000-7f3930f00000 ---p 00000000 00:00 0 
+7f3930f00000-7f3931000000 rw-p 00000000 00:00 0 
+7f3931000000-7f39327d0000 rwxp 00000000 00:00 0 
+7f39327d0000-7f3940000000 ---p 00000000 00:00 0 
+7f3940000000-7f39408cf000 rw-p 00000000 00:00 0 
+7f39408cf000-7f3944000000 ---p 00000000 00:00 0 
+7f3944002000-7f3944005000 r--s 0001a000 08:02 820969                     /usr/lib/jvm/java-8-oracle/jre/lib/jce.jar
+7f394400b000-7f394400e000 r--s 0001b000 08:03 1707697                    /home/timothy/.m2/repository/net/alchim31/maven/scala-maven-plugin/3.2.2/scala-maven-plugin-3.2.2.jar
+7f3944010000-7f394405f000 rw-p 00000000 00:00 0 
+7f394405f000-7f3944060000 ---p 00000000 00:00 0 
+7f3944060000-7f3944160000 rw-p 00000000 00:00 0 
+7f3944160000-7f3944161000 ---p 00000000 00:00 0 
+7f3944161000-7f3944261000 rw-p 00000000 00:00 0 
+7f3944261000-7f3944262000 ---p 00000000 00:00 0 
+7f3944262000-7f3944362000 rw-p 00000000 00:00 0 
+7f3944362000-7f3944363000 ---p 00000000 00:00 0 
+7f3944363000-7f3944463000 rw-p 00000000 00:00 0 
+7f3944463000-7f3944464000 ---p 00000000 00:00 0 
+7f3944464000-7f3944564000 rw-p 00000000 00:00 0 
+7f3944564000-7f3944565000 ---p 00000000 00:00 0 
+7f3944565000-7f394469b000 rw-p 00000000 00:00 0 
+7f394469b000-7f39448f6000 ---p 00000000 00:00 0 
+7f39448f6000-7f394492c000 rw-p 00000000 00:00 0 
+7f394492c000-7f3944b86000 ---p 00000000 00:00 0 
+7f3944b86000-7f3944bca000 rw-p 00000000 00:00 0 
+7f3944bca000-7f3944ccf000 ---p 00000000 00:00 0 
+7f3944ccf000-7f3944d30000 rw-p 00000000 00:00 0 
+7f3944d30000-7f3945090000 ---p 00000000 00:00 0 
+7f3945090000-7f39450ab000 r-xp 00000000 08:02 820949                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f39450ab000-7f39452ab000 ---p 0001b000 08:02 820949                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f39452ab000-7f39452ac000 rw-p 0001b000 08:02 820949                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f39452b0000-7f39452bb000 r-xp 00000000 08:02 2888645                    /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f39452bb000-7f39454ba000 ---p 0000b000 08:02 2888645                    /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f39454ba000-7f39454bb000 r--p 0000a000 08:02 2888645                    /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f39454bb000-7f39454bc000 rw-p 0000b000 08:02 2888645                    /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f39454bc000-7f39454c2000 rw-p 00000000 00:00 0 
+7f39454c8000-7f39454d3000 r-xp 00000000 08:02 2888655                    /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f39454d3000-7f39456d2000 ---p 0000b000 08:02 2888655                    /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f39456d2000-7f39456d3000 r--p 0000a000 08:02 2888655                    /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f39456d3000-7f39456d4000 rw-p 0000b000 08:02 2888655                    /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f39456d8000-7f39456ee000 r-xp 00000000 08:02 2888639                    /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f39456ee000-7f39458ed000 ---p 00016000 08:02 2888639                    /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f39458ed000-7f39458ee000 r--p 00015000 08:02 2888639                    /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f39458ee000-7f39458ef000 rw-p 00016000 08:02 2888639                    /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f39458ef000-7f39458f1000 rw-p 00000000 00:00 0 
+7f39458f8000-7f3945900000 r-xp 00000000 08:02 2888641                    /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3945900000-7f3945aff000 ---p 00008000 08:02 2888641                    /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3945aff000-7f3945b00000 r--p 00007000 08:02 2888641                    /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3945b00000-7f3945b01000 rw-p 00008000 08:02 2888641                    /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3945b08000-7f3945b33000 r-xp 00000000 08:02 820943                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f3945b33000-7f3945d32000 ---p 0002b000 08:02 820943                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f3945d32000-7f3945d34000 rw-p 0002a000 08:02 820943                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f3945d38000-7f3945d45000 r-xp 00000000 08:02 820948                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f3945d45000-7f3945f45000 ---p 0000d000 08:02 820948                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f3945f45000-7f3945f47000 rw-p 0000d000 08:02 820948                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f3945f48000-7f3945f4f000 r-xp 00000000 08:02 2888700                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f3945f4f000-7f394614e000 ---p 00007000 08:02 2888700                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f394614e000-7f394614f000 r--p 00006000 08:02 2888700                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f394614f000-7f3946150000 rw-p 00007000 08:02 2888700                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f3946150000-7f3946258000 r-xp 00000000 08:02 2888616                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f3946258000-7f3946457000 ---p 00108000 08:02 2888616                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f3946457000-7f3946458000 r--p 00107000 08:02 2888616                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f3946458000-7f3946459000 rw-p 00108000 08:02 2888616                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f3946460000-7f394713c000 r-xp 00000000 08:02 820925                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f394713c000-7f394733c000 ---p 00cdc000 08:02 820925                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f394733c000-7f3947416000 rw-p 00cdc000 08:02 820925                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f3947416000-7f3947461000 rw-p 00000000 00:00 0 
+7f3947468000-7f3947628000 r-xp 00000000 08:02 2888546                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f3947628000-7f3947828000 ---p 001c0000 08:02 2888546                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f3947828000-7f394782c000 r--p 001c0000 08:02 2888546                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f394782c000-7f394782e000 rw-p 001c4000 08:02 2888546                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f394782e000-7f3947832000 rw-p 00000000 00:00 0 
+7f3947838000-7f394783b000 r-xp 00000000 08:02 2888570                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f394783b000-7f3947a3a000 ---p 00003000 08:02 2888570                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3947a3a000-7f3947a3b000 r--p 00002000 08:02 2888570                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3947a3b000-7f3947a3c000 rw-p 00003000 08:02 2888570                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3947a40000-7f3947a56000 r-xp 00000000 08:02 820920                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f3947a56000-7f3947c55000 ---p 00016000 08:02 820920                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f3947c55000-7f3947c56000 rw-p 00015000 08:02 820920                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f3947c58000-7f3947c70000 r-xp 00000000 08:02 2888692                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3947c70000-7f3947e6f000 ---p 00018000 08:02 2888692                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3947e6f000-7f3947e70000 r--p 00017000 08:02 2888692                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3947e70000-7f3947e71000 rw-p 00018000 08:02 2888692                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3947e71000-7f3947e75000 rw-p 00000000 00:00 0 
+7f3947e78000-7f3947e9e000 r-xp 00000000 08:02 2888518                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f3947ea4000-7f3947f90000 rw-p 00000000 00:00 0 
+7f3947f90000-7f3947f98000 rw-s 00000000 08:02 3801124                    /tmp/hsperfdata_timothy/10512
+7f3947f9b000-7f3947f9c000 rw-p 00000000 00:00 0 
+7f3947f9c000-7f3947f9f000 ---p 00000000 00:00 0 
+7f3947f9f000-7f394809d000 rw-p 00000000 00:00 0 
+7f394809d000-7f394809e000 r--p 00025000 08:02 2888518                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f394809e000-7f394809f000 rw-p 00026000 08:02 2888518                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f394809f000-7f39480a0000 rw-p 00000000 00:00 0 
+7f39480a0000-7f39480a1000 r--p 00000000 00:00 0 
+7f39480a1000-7f39480a6000 rw-p 00000000 00:00 0 
+7ffe4b5c5000-7ffe4b5e7000 rw-p 00000000 00:00 0                          [stack]
+7ffe4b5f8000-7ffe4b5fb000 r--p 00000000 00:00 0                          [vvar]
+7ffe4b5fb000-7ffe4b5fd000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Xbootclasspath/a:/home/timothy/.m2/repository/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar:/home/timothy/.m2/repository/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar:/home/timothy/.m2/repository/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar:/home/timothy/.m2/repository/org/scala-lang/scala-library/2.11.6/scala-library-2.11.6.jar:/home/timothy/.m2/repository/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar:/home/timothy/.m2/repository/org/scala-lang/scala-library/2.11.4/scala-library-2.11.4.jar:/home/timothy/.m2/repository/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.jar 
+java_command: scala_maven_executions.MainWithArgsInFile scala.tools.nsc.Main /tmp/scala-maven-2064190045883563548.args
+java_class_path (initial): /home/timothy/.m2/repository/net/alchim31/maven/scala-maven-plugin/3.2.2/scala-maven-plugin-3.2.2.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+PATH=/opt/apache-maven-3.5.4/bin/:/home/timothy/bin:/home/timothy/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/cuda/bin:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+LD_LIBRARY_PATH=/usr/local/cuda/lib64:
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xad2a40], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xad2a40], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x92a610], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x92a610], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x92a610], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x92a610], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x92be70], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x92d270], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x92d270], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x92d270], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x92d270], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.5 LTS"
+
+uname:Linux 4.15.0-32-generic #35~16.04.1-Ubuntu SMP Fri Aug 10 21:54:34 UTC 2018 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 30148, NOFILE 1048576, AS infinity
+load average:1.21 0.98 0.72
+
+/proc/meminfo:
+MemTotal:        8063600 kB
+MemFree:         1841324 kB
+MemAvailable:    5532284 kB
+Buffers:          115448 kB
+Cached:          3777900 kB
+SwapCached:           12 kB
+Active:          2315184 kB
+Inactive:        3403948 kB
+Active(anon):    1551012 kB
+Inactive(anon):   420056 kB
+Active(file):     764172 kB
+Inactive(file):  2983892 kB
+Unevictable:          32 kB
+Mlocked:              32 kB
+SwapTotal:       7999484 kB
+SwapFree:        7998448 kB
+Dirty:               264 kB
+Writeback:             0 kB
+AnonPages:       1826044 kB
+Mapped:           523276 kB
+Shmem:            145292 kB
+Slab:             347628 kB
+SReclaimable:     248768 kB
+SUnreclaim:        98860 kB
+KernelStack:       11968 kB
+PageTables:        37500 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    12031284 kB
+Committed_AS:    7560416 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:     1058668 kB
+DirectMap2M:     7225344 kB
+DirectMap1G:           0 kB
+
+
+CPU:total 8 (initial active 8) (8 cores per cpu, 1 threads per core) family 21 model 2 stepping 0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, mmxext, 3dnowpref, lzcnt, sse4a, tsc, tscinvbit, tscinv, bmi1
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 4113.522
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 16
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 1
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 4113.750
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 17
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 2
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 2108.961
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 18
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 3
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 2072.055
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 19
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 4
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 4113.746
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 4
+cpu cores	: 4
+apicid		: 20
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 5
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 4113.729
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 5
+cpu cores	: 4
+apicid		: 21
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 6
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 4113.745
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 6
+cpu cores	: 4
+apicid		: 22
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+processor	: 7
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 2
+model name	: AMD FX(tm)-8350 Eight-Core Processor
+stepping	: 0
+microcode	: 0x6000852
+cpu MHz		: 4113.651
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 8
+core id		: 7
+cpu cores	: 4
+apicid		: 23
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 8026.80
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb eff_freq_ro
+
+
+
+Memory: 4k page, physical 8063600k(1840952k free), swap 7999484k(7998448k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.181-b13) for linux-amd64 JRE (1.8.0_181-b13), built on Jul  7 2018 00:56:38 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Wed Aug 15 18:25:00 2018
+elapsed time: 4 seconds (0d 0h 0m 4s)
+

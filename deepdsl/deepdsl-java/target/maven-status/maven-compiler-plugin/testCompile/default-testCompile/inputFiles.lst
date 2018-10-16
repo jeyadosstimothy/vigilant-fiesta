@@ -1,0 +1,8 @@
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestSoftmax.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestLRN.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestBatchNorm.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestPooling.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestDropout.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestActivation.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestConcat.java
+/home/timothy/Desktop/finalYearProject/deepdsl/deepdsl-java/src/test/java/deepdsl/cudnn/TestConvolution.java
