@@ -1,3 +1,6 @@
+from subprocess import call as syscall
+from os import chdir
+
 class CodeGenerator:
     def __init__(self):
         self.code = ''
@@ -45,7 +48,7 @@ class CodeGenerator:
 
     def generateDimensions(self):
         N = '''
-                val N = {batchSize}'''.format(batchSize=self.batchSize)
+                val N = batch_size'''.format(batchSize=self.batchSize)
         dims = '''
                 val dim = List(N, ''' + ', '.join(self.dims) + ''')'''
         K = '''
@@ -77,23 +80,59 @@ class CodeGenerator:
                 else:
                     visited['full'] = 0
                 count = visited['full']
+                numNodes = layer.numNodes
                 layerCode += '''
-                val fc{count} = Layer.full("fc{count}", {numNodes})'''.format(count=count, numNodes=layer.numNodes)
+                val fc{count} = Layer.full("fc{count}", {numNodes})'''.format(count=count, numNodes=numNodes)
                 networkCode.append('fc{count}'.format(count=count))
+            elif type(layer) is Convolv:
+                if 'conv' in visited:
+                    visited['conv'] += 1
+                else:
+                    visited['conv'] = 0
+                count = visited['conv']
+                kernelSize = layer.kernel
+                numNodes = layer.numNodes # CudaLayer.convolv("cv1", 5, 20)
+                layerCode += '''
+                val cv{count} = CudaLayer.convolv("cv{count}", {kernel}, {numNodes})'''.format(count=count, kernel=kernelSize, numNodes=numNodes)
+                networkCode.append('cv{count}'.format(count=count))
 
-            if layer.activation.strip().lower() == 'relu':
+            elif type(layer) is MaxPool:
+                if 'mp' in visited:
+                    visited['mp'] += 1
+                else:
+                    visited['mp'] = 0
+                count = visited['mp']
+                kernelSize = layer.kernel
+                layerCode += '''
+                val mp{count} = CudaLayer.max_pool({kernel})'''.format(count=count, kernel=kernelSize)
+                networkCode.append('mp{count}'.format(count=count))
+
+            elif type(layer) is Flatten:
+                if 'fl' in visited:
+                    visited['fl'] += 1
+                else:
+                    visited['fl'] = 0
+                count = visited['fl']
+                numDims = layer.numDims
+                cuts = layer.cuts
+                layerCode += '''
+                val fl{count} = Layer.flatten({numDims}, {cuts})'''.format(count=count, numDims=numDims, cuts=cuts)
+                networkCode.append('fl{count}'.format(count=count))
+
+            if layer.activation and layer.activation.strip().lower() == 'relu':
                 if 'relu' not in visited:
                     visited['relu'] = True
                     layerCode += '''
                 val relu = CudaLayer.relu(2)'''
                 networkCode.append('relu')
 
-            elif layer.activation.strip().lower() == 'softmax':
+            elif layer.activation and layer.activation.strip().lower() == 'softmax':
                 if 'softmax' not in visited:
                     visited['softmax'] = True
                     layerCode += '''
                 val softmax = CudaLayer.softmax'''
                 networkCode.append('softmax')
+
         networkCode.reverse()
         networkCode = '''
 
@@ -111,7 +150,7 @@ class CodeGenerator:
             code += '''
                 val loss = (Layer.log_loss(yCuda) o network)(xCuda)'''
         code += '''
-                val accuracy = network(x1)'''
+                val accuracy = network(xCuda)'''
 
         return code
 
@@ -144,7 +183,7 @@ class CodeGenerator:
     def testCode(self):
         code = '''
             @Test
-            def testMyNet = mynet({batchSize}, {learnrate}f, {momentum}f, {decay}f, {trainEpochs}, {testEpochs}, "mynet")
+            def testMyNet = mynet({batchSize}, {learnrate}f, {momentum}f, {decay}f, {trainEpochs}, {testEpochs}, "MyNet")
             '''.format(batchSize=self.batchSize, learnrate=self.learnrate, momentum=self.momentum, decay=self.decay, trainEpochs=self.trainEpochs, testEpochs=1)
 
         return code
@@ -163,8 +202,9 @@ class CodeGenerator:
 
     def compile(self):
         self.generateClass()
-        with open('TestNetworkNew.scala', 'w+') as f:
+        with open('deepdsl/deepdsl-java/src/test/scala/deepdsl/derivation/TestNetworkNew.scala', 'w+') as f:
             f.write(self.code)
+
 
 class Model:
     def __init__(self, layers):
@@ -179,10 +219,14 @@ class Model:
         self.codeGenerator.setLoss(loss)
         self.codeGenerator.setTrainEpochs(epochs)
         self.codeGenerator.compile()
-
+        print('Generated DeepDSL code...')
+        chdir('deepdsl/deepdsl-java')
+        syscall(['mvn', '-Plinux64', 'clean', 'install'])
+        syscall(['mvn', '-Plinux64', 'test', '-Dtest=TestNetworkNew#testMyNet'])
 
     def train(self):
-        pass
+        chdir('deepdsl/deepdsl-java')
+        syscall(['mvn', '-Plinux64', 'exec:java', '-Dexec.mainClass="deepdsl.gen.MyNet"'])
 
 class Layer:
     def __init__(self, numNodes, activation):
@@ -204,11 +248,30 @@ class Input(Layer):
 class Full(Layer):
     pass
 
+class Convolv(Layer):
+    def __init__(self, kernel, numNodes, activation=None):
+        self.numNodes = numNodes
+        self.kernel = kernel
+        self.activation = activation
 
-inputs = Input('Mnist', shape=(1, 28, 28), batchSize=32)
+class MaxPool(Layer):
+    def __init__(self, kernel, activation=None):
+        self.kernel = kernel
+        self.activation = activation
+
+class Flatten(Layer):
+    def __init__(self, numDims, cuts, activation=None):
+        self.numDims = numDims
+        self.cuts = cuts
+        self.activation = activation
+
+inputs = Input('mnist', shape=(1, 28, 28), batchSize=32)
 numClasses = 10
 
-x = Full(500, activation='relu')(inputs)
+x = MaxPool(2)(Convolv(5, 20)(inputs))
+x = MaxPool(2)(Convolv(5, 20)(x))
+x = Flatten(4, 1)(x)
+x = Full(500, activation='relu')(x)
 predictions = Full(numClasses, activation='softmax')(x)
 
 model = Model(layers=predictions)
