@@ -2,8 +2,8 @@ package deepdsl.tensor;
 
 public abstract class JTensorFactory {
 	int[] dims;
-	int size, batch;
-	
+	public int size, batch, rows;
+
 	int size() {
 		int ret = 1;
 		for(int i=0; i<dims.length; i++) {
@@ -11,16 +11,16 @@ public abstract class JTensorFactory {
 		}
 		return ret;
 	}
-	
+
 	JTensorFactory(int[] dims) {
 		this.dims = dims;
 		this.size = size();
 		this.batch = dims[0];
 	}
-	
+
 	// retrieve image and label simultaneously and nullify the image or label after retrieval
 	private JTensorFloat imageCache = null, labelCache = null;
-	
+
 	public JTensorFloat image() {
 		if (imageCache == null) {
 			JTensorFloatTuple tuple = nextFloat();
@@ -41,6 +41,6 @@ public abstract class JTensorFactory {
 		labelCache = null;
 		return ret;
 	}
-	
+
 	public abstract JTensorFloatTuple nextFloat();
 }

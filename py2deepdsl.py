@@ -11,9 +11,8 @@ class CodeGenerator:
         self.dims = list(map(str, self.inputs.shape))
 
     def setNetwork(self, layers):
-        self.inputs = layers[-1]
-        self.layers = layers[:-1]
-        self.layers.reverse()
+        self.inputs = layers[0]
+        self.layers = layers[1:]
         self.setDimensions()
 
     def setDecay(self, decay):
@@ -90,10 +89,10 @@ class CodeGenerator:
                 else:
                     visited['conv'] = 0
                 count = visited['conv']
-                kernelSize = layer.kernel
-                numNodes = layer.numNodes # CudaLayer.convolv("cv1", 5, 20)
+                kernelSize = layer.kernelSize
+                numKernels = layer.numKernels # CudaLayer.convolv("cv1", 5, 20)
                 layerCode += '''
-                val cv{count} = CudaLayer.convolv("cv{count}", {kernel}, {numNodes})'''.format(count=count, kernel=kernelSize, numNodes=numNodes)
+                val cv{count} = CudaLayer.convolv("cv{count}", {kernel}, {numNodes})'''.format(count=count, kernel=kernelSize, numNodes=numKernels)
                 networkCode.append('cv{count}'.format(count=count))
 
             elif type(layer) is MaxPool:
@@ -102,7 +101,7 @@ class CodeGenerator:
                 else:
                     visited['mp'] = 0
                 count = visited['mp']
-                kernelSize = layer.kernel
+                kernelSize = layer.kernelSize
                 layerCode += '''
                 val mp{count} = CudaLayer.max_pool({kernel})'''.format(count=count, kernel=kernelSize)
                 networkCode.append('mp{count}'.format(count=count))
@@ -224,20 +223,10 @@ class Model:
         syscall(['mvn', '-Plinux64', 'clean', 'install'])
         syscall(['mvn', '-Plinux64', 'test', '-Dtest=TestNetworkNew#testMyNet'])
 
-    def train(self):
-        chdir('deepdsl/deepdsl-java')
-        syscall(['mvn', '-Plinux64', 'exec:java', '-Dexec.mainClass="deepdsl.gen.MyNet"'])
-
 class Layer:
     def __init__(self, numNodes, activation):
         self.numNodes = numNodes
         self.activation = activation
-
-    def __call__(self, layers):
-        if issubclass(type(layers), Layer):
-            return [self, layers]
-        else:
-            return [self] + layers
 
 class Input(Layer):
     def __init__(self, dataset, shape, batchSize=16):
@@ -249,14 +238,14 @@ class Full(Layer):
     pass
 
 class Convolv(Layer):
-    def __init__(self, kernel, numNodes, activation=None):
-        self.numNodes = numNodes
-        self.kernel = kernel
+    def __init__(self, kernelSize, numKernels, activation=None):
+        self.numKernels = numKernels
+        self.kernelSize = kernelSize
         self.activation = activation
 
 class MaxPool(Layer):
-    def __init__(self, kernel, activation=None):
-        self.kernel = kernel
+    def __init__(self, kernelSize, activation=None):
+        self.kernelSize = kernelSize
         self.activation = activation
 
 class Flatten(Layer):
@@ -264,16 +253,3 @@ class Flatten(Layer):
         self.numDims = numDims
         self.cuts = cuts
         self.activation = activation
-
-inputs = Input('mnist', shape=(1, 28, 28), batchSize=32)
-numClasses = 10
-
-x = MaxPool(2)(Convolv(5, 20)(inputs))
-x = MaxPool(2)(Convolv(5, 20)(x))
-x = Flatten(4, 1)(x)
-x = Full(500, activation='relu')(x)
-predictions = Full(numClasses, activation='softmax')(x)
-
-model = Model(layers=predictions)
-model.compile(decay=0.0005, momentum=0.1, learnrate=0.01, loss='categorical_crossentropy', epochs=50)
-model.train()

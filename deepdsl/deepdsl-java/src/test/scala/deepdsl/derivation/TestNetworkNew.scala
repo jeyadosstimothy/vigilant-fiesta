@@ -48,7 +48,7 @@
                 CudaCompile(path).print(loop)
             }
             @Test
-            def testMyNet = mynet(32, 0.01f, 0.1f, 0.0005f, 50, 1, "MyNet")
+            def testMyNet = mynet(512, 0.01f, 0.1f, 0.0005f, 50, 1, "MyNet")
             
         }
         

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MnistFactory extends JTensorFactory {
-	public static final int max_train_size = 60000, max_test_size = 10000;
+	public static final int max_train_size = 50000, max_test_size = 10000;
 
 	byte[] dataByteArray, labelByteArray;
 	int counter;
@@ -27,6 +27,7 @@ public class MnistFactory extends JTensorFactory {
 		this.labelByteArray = labelByteArray;
 		counter = 0;
 		max_count = dataByteArray.length / size;
+		this.rows = dataByteArray.length / (size / batch);
 	}
 
 	public JTensorFloatTuple nextFloat() {

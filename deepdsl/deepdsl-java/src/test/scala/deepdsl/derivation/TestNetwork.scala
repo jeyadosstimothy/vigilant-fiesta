@@ -32,7 +32,7 @@ class TestNetwork {
   @Test
   def testAlexnet256 = alexnet(256, 0.01f, 0.1f, 0.0005f, 10, 1, "alexnet256")
   @Test
-  def testLenet = lenet(500, 0.01f, 0.1f, 0.0005f, 10, 1, "lenet")
+  def testLenet = lenet(512, 0.01f, 0.1f, 0.0005f, 10, 1, "lenet")
 
 	private def resnet(batch_size: Int, learn_rate: Float, momentum: Float, decay: Float, train_iter: Int, test_iter: Int, name: String) {
     val N = batch_size; val C = 3;  val N1 = 224; val N2 = 224 // batch size, channel, and x/y size

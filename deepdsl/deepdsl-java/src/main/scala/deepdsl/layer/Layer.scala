@@ -52,7 +52,7 @@ object Layer {
     // W: M2 x M1		B: M2		X: N x M1
     def full(w: VecDec, b: VecDec) = {
       val N = T.dim; val M2 = w.dim(0); val M1 = w.dim(1)
-      println("Layer.scala","in full")
+
       T.fun(N, M1, (x:VecDec) =>
         T.vec(N, M2, (i, j) =>
           T.sum(M1, k => w(j, k) * x(i, k)) + b(j)

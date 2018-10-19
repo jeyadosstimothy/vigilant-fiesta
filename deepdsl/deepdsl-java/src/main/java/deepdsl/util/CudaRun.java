@@ -1,6 +1,6 @@
 package deepdsl.util;
 
-import java.io.File; 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -13,21 +13,21 @@ import deepdsl.cudnn.*;
 import deepdsl.cudnn.config.*;
 import deepdsl.tensor.*;
 
-public abstract class CudaRun { 
-	String network_dir;    
+public abstract class CudaRun {
+	String network_dir;
 	JTensorFactory trainData, testData;
 
 	protected Set<JCudaFunction> layers = new HashSet<>(); // layers
-	protected Map<String, JCudaTensor> params = new HashMap<>();   // parameters 
+	protected Map<String, JCudaTensor> params = new HashMap<>();   // parameters
 	private Set<String> fixedParams = new HashSet<>();
 
 	public CudaRun(String path) {
-		this.network_dir = path; 
+		this.network_dir = path;
 
 		File f = new File(path);
-		if(!f.exists()) { 
+		if(!f.exists()) {
 			if(!f.mkdir()) {
-				throw new RuntimeException("cannot create the network directory: " + path); 
+				throw new RuntimeException("cannot create the network directory: " + path);
 			}
 		}
 		JCudaTensor.enableMemoryCache();
@@ -43,7 +43,7 @@ public abstract class CudaRun {
 	}
 
 	public JCudnnConvolution addConvolution(int[] x, int[] w, int[] b, int stride, int padding) {
-		return add(new JCudnnConvolution(x, w, b, stride, padding)); 
+		return add(new JCudnnConvolution(x, w, b, stride, padding));
 	}
 	public JCudnnDropout addDropout(String key, int[] x, float dropout) {
 		return add(new JCudnnDropout(network_dir+"/"+key, x ,dropout));
@@ -81,7 +81,7 @@ public abstract class CudaRun {
 			ret = init(type, x, dim).loadCuda();
 			fixedParams.add(key);
 		}
-		else if(Files.exists(Paths.get(path))) { 
+		else if(Files.exists(Paths.get(path))) {
 			ret = new JTensorFloat(null, dim).loadCuda(network_dir+"/"+key);
 		}
 		else {
@@ -89,27 +89,27 @@ public abstract class CudaRun {
 		}
 		params.put(key, ret);
 		return ret;
-	} 
+	}
 
 	private JTensorFloat init(String type, float x, int[] dim) {
 		JTensorFloat t;
 		switch(type) {
-		case "Constant" : 
+		case "Constant" :
 			if(x == 0) {
 				t = JTensor.zeroFloat(dim);
 			}
 			else {
-				t = JTensor.constFloat(x, dim); 
+				t = JTensor.constFloat(x, dim);
 			}
 			break;
-		case "Random" : 
+		case "Random" :
 			t = JTensor.randomFloat(-x, x, dim);
 			break;
-		case "Gaussian" : 
+		case "Gaussian" :
 			t = JTensor.gaussianFloat(x, dim);
 			break;
 		default:
-			throw new RuntimeException("Incorrect parameter type: " + type);	
+			throw new RuntimeException("Incorrect parameter type: " + type);
 		}
 		return t;
 	}
@@ -126,10 +126,10 @@ public abstract class CudaRun {
 
 	public void save() {
 		for(JCudaFunction f: layers) { f.save(); }
-		for(String k: params.keySet()) {  
+		for(String k: params.keySet()) {
 			if(!fixedParams.contains(k)) {
 				params.get(k).save(network_dir+"/"+k);
-			} 
+			}
 		}
 	}
 
@@ -138,31 +138,43 @@ public abstract class CudaRun {
 
 	public void train(int train_itr) {
 		double start = System.nanoTime();
+		int batches = trainData.rows / trainData.batch;
 		for(int i=1; i<=train_itr; i++) {
-			JTensorFloatTuple t = trainData.nextFloat();
-			float loss = trainFunction(t.getImage(), 
-					t.getLabel());
-			System.out.println(i + " " + loss);
+			float avg_loss = 0;
+			for(int j=0; j < batches; j++)
+			{
+				JTensorFloatTuple t = trainData.nextFloat();
+				float loss = trainFunction(t.getImage(),
+						t.getLabel());
+				avg_loss+=loss;
+			}
+			System.out.println(i + " " + avg_loss/batches);
 		}
 		System.out.println((System.nanoTime()-start)/1E9);
-	} 
+	}
 
 	public void test(int test_itr) {
 		float average = 0;
+		int batches = testData.rows / testData.batch;
 		for(int i=1; i<=test_itr; i++) {
-			JTensorFloatTuple t = testData.nextFloat();
-			float precision = testFunction(t.getImage()).accuracy(t.getLabel(), 1);
-			average += precision;
-			System.out.println(i + " " + precision);
+			float avg_precision = 0;
+			for(int j=0; j < batches; j++)
+			{
+				JTensorFloatTuple t = testData.nextFloat();
+				float precision = testFunction(t.getImage()).accuracy(t.getLabel(), 1);
+				avg_precision += precision;
+			}
+			average += avg_precision;
+			System.out.println(i + " " + avg_precision/batches);
 		}
-		System.out.println("Average precision: " + average/test_itr);
+		System.out.println("Average precision: " + average/(test_itr * batches));
 	}
 
 	public void infer(int test_itr) {
 		for(int i=1; i<=test_itr; i++) {
 			JTensorFloatTuple t = testData.nextFloat();
-			int[] p = testFunction(t.getImage()).prediction(); 
-			System.out.println(i + " " + Arrays.toString(p));
-		} 
+			int[] p = testFunction(t.getImage()).prediction();
+			System.out.println(i + " Prediction: " + Arrays.toString(p) + " Target: "+ t.getLabel());
+		}
 	}
 }
