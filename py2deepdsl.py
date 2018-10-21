@@ -119,12 +119,18 @@ class CodeGenerator:
                 networkCode.append('fl{count}'.format(count=count))
 
             if layer.activation and layer.activation.strip().lower() == 'relu':
-                if 'relu' not in visited:
-                    visited['relu'] = True
-                    layerCode += '''
-                val relu = CudaLayer.relu(2)'''
-                networkCode.append('relu')
-
+                if type(layer) is Convolv:
+                    if 'relu4' not in visited:
+                        visited['relu4'] = True
+                        layerCode += '''
+                val relu4 = CudaLayer.relu(4)'''
+                    networkCode.append('relu4')
+                else:
+                    if 'relu2' not in visited:
+                        visited['relu2'] = True
+                        layerCode += '''
+                val relu2 = CudaLayer.relu(2)'''
+                    networkCode.append('relu2')
             elif layer.activation and layer.activation.strip().lower() == 'softmax':
                 if 'softmax' not in visited:
                     visited['softmax'] = True
@@ -220,7 +226,7 @@ class Model:
         self.codeGenerator.compile()
         print('Generated DeepDSL code...')
         chdir('deepdsl/deepdsl-java')
-        syscall(['mvn', '-Plinux64', 'clean', 'install'])
+        syscall(['mvn', '-Plinux64', 'clean'])
         syscall(['mvn', '-Plinux64', 'test', '-Dtest=TestNetworkNew#testMyNet'])
 
 class Layer:
