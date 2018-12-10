@@ -225,9 +225,9 @@ class Model:
         self.codeGenerator.setTrainEpochs(epochs)
         self.codeGenerator.compile()
         print('Generated DeepDSL code...')
-        chdir('deepdsl/deepdsl-java')
-        syscall(['mvn', '-Plinux64', 'clean'])
-        syscall(['mvn', '-Plinux64', 'test', '-Dtest=TestNetworkNew#testMyNet'])
+        #chdir('deepdsl/deepdsl-java')
+        #syscall(['mvn', '-Plinux64', 'clean'])
+        #syscall(['mvn', '-Plinux64', 'test', '-Dtest=TestNetworkNew#testMyNet', '-X', '-e'])
 
 class Layer:
     def __init__(self, numNodes, activation):

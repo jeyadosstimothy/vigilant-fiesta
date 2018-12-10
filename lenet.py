@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 from py2deepdsl import *
 
 layers = [
@@ -13,3 +16,6 @@ layers = [
 
 model = Model(layers=layers)
 model.compile(decay=0.0005, momentum=0.1, learnrate=0.01, loss='categorical_crossentropy', epochs=50)
+
+
+print("--- %s seconds ---" % (time.time() - start_time))
